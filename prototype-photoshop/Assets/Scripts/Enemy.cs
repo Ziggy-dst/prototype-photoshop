@@ -19,12 +19,12 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         
     }
 
-    public void Dead()
+    public virtual void Dead()
     {
         Destroy(gameObject);
     }

@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 794252724}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.103955, y: -2.4017134, z: 0.0077860374}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -320,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 1386020861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.214832, y: -4.5848, z: -1.0054891}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -338,11 +338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177de56c82efe9e49ae911dde4c5d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGroup: {fileID: 6615207627693991511, guid: 9c73470932f33f64d869006a898008f1, type: 3}
+  groupEnemy: {fileID: 6615207627693991511, guid: 9c73470932f33f64d869006a898008f1, type: 3}
+  inflateEnemy: {fileID: 8608330984920418375, guid: d926db8d2628d9d42908492bea34d643, type: 3}
   autoSpawn: 1
   autoSpawnEnemyQuantityThreshold: 100
-  screenSizeX: 10
-  screenSizeY: 7
+  screenSizeX: 8
+  screenSizeY: 5
   maxDistanceToScreenEdge: 2
   screenDistanceOffset: 1
   currentEnemyQuantity: 0

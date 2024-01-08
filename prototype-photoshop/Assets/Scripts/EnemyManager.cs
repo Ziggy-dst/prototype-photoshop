@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Enemy Prefabs")] 
-    public GameObject enemyGroup;
+    public GameObject groupEnemy;
+    public GameObject inflateEnemy;
 
     [Header("Auto Spawn")]
     public bool autoSpawn = false;
@@ -25,17 +26,17 @@ public class EnemyManager : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         UpdateEnemyQuantity();
         
-        if(autoSpawn && currentEnemyQuantity < autoSpawnEnemyQuantityThreshold) Spawn();
+        if(autoSpawn && currentEnemyQuantity < autoSpawnEnemyQuantityThreshold) SpawnOffScreen(groupEnemy);
 
         if (Input.GetMouseButtonDown(1))
         {
-            Spawn();
+            SpawnOffScreen(groupEnemy);
+            SpawnOnScreen(inflateEnemy);
         }
     }
 
@@ -44,7 +45,7 @@ public class EnemyManager : MonoBehaviour
         currentEnemyQuantity = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).Length;
     }
 
-    public void Spawn()
+    public void SpawnOffScreen(GameObject enemyPrefab)
     {
         for (int i = 0; i < 1;)
         {
@@ -54,9 +55,17 @@ public class EnemyManager : MonoBehaviour
             
             if (Mathf.Abs(spawnPos.x) > screenSizeX + screenDistanceOffset || Mathf.Abs(spawnPos.y) > screenSizeY + screenDistanceOffset)
             {
-                Instantiate(enemyGroup, spawnPos, Quaternion.Euler(Vector3.zero));
+                Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(Vector3.zero));
                 i++;
             }
         }
+    }
+
+    public void SpawnOnScreen(GameObject enemyPrefab)
+    {
+        Vector2 spawnPos =
+            new Vector2(Random.Range(-screenSizeX, screenSizeX), Random.Range(-screenSizeY, screenSizeY));
+
+        Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(Vector3.zero));
     }
 }
