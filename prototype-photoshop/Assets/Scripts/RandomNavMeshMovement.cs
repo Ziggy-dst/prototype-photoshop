@@ -6,11 +6,11 @@ using UnityEngine.AI; //important
 //if you use this code you are contractually obligated to like the YT video
 public class RandomNavMeshMovement : MonoBehaviour //don't forget to change the script name if you haven't
 {
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
     public float range; //radius of sphere
 
-    public Transform centrePoint; //centre of the area the agent wants to move around in
-    //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
+    public Transform centerPoint; //center of the area the agent wants to move around in
+    //instead of centerPoint you can set it as the transform of the agent if you don't care about a specific area
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class RandomNavMeshMovement : MonoBehaviour //don't forget to change the 
         if(agent.remainingDistance <= agent.stoppingDistance) //done with path
         {
             Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+            if (RandomPoint(Vector3.zero, range, out point)) //pass in our centre point and radius of area
             {
                 Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                 agent.SetDestination(point);

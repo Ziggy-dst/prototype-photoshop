@@ -1,6 +1,8 @@
+
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class FollowFlocking : MonoBehaviour
 {
@@ -17,14 +19,12 @@ public class FollowFlocking : MonoBehaviour
     public float stopDistance = 1f;
 
     private bool isFollowing = false;
-
-    private SpriteRenderer _spriteRenderer;
     
 
-
-    private void Start()
+    private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        leader = transform.parent.GetComponentInChildren<NavMeshAgent>().transform;
+        currentVelocity = Vector2.zero;
     }
 
     void Update()
