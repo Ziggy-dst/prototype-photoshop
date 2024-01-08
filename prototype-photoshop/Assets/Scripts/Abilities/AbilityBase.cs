@@ -6,17 +6,7 @@ namespace Abilities
 {
     public class AbilityBase : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public InputHandler.TriggerCondition triggerCondition = 0;
 
         public virtual void UseAbility()
         {

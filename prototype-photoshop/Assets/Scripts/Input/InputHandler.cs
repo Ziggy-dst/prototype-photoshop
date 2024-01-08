@@ -4,31 +4,49 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public KeySequenceAsset keySequenceAsset;
-
-    // Start is called before the first frame update
-    void Start()
+    public enum TriggerCondition
     {
-        
+        Down = 0,
+        Hold = 1,
+        Up = 2
     }
 
-    // Update is called once per frame
+    public KeySequenceAsset keySequenceAsset;
+
     void Update()
     {
         HandleInput();
     }
 
-    public void HandleInput()
+    private void HandleInput()
     {
         foreach (var item in keySequenceAsset.keySequenceBindings)
         {
             if (Input.GetKey(item.keyModifier))
             {
-                if (Input.GetKeyDown(item.keyTrigger))
+                if (SatisfyTriggerCondition(item.keyTrigger, item.ability.triggerCondition))
                 {
                     item.ability.UseAbility();
                 }
             }
         }
+    }
+
+    private bool SatisfyTriggerCondition(KeyCode keyTrigger, TriggerCondition triggerCondition)
+    {
+        switch (triggerCondition)
+        {
+            case TriggerCondition.Down:
+                if (Input.GetKeyDown(keyTrigger)) return true;
+                break;
+            case TriggerCondition.Hold:
+                if (Input.GetKey(keyTrigger)) return true;
+                break;
+            case TriggerCondition.Up:
+                if (Input.GetKeyUp(keyTrigger)) return true;
+                break;
+        }
+
+        return false;
     }
 }
