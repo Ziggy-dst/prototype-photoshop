@@ -6,10 +6,19 @@ namespace Abilities
 {
     public class AbilityTest : AbilityBase
     {
-        public override void UseAbility()
+        public override void OnKeyPressed()
         {
-            base.UseAbility();
-            print("test ability");
+            print("pressed");
+        }
+
+        public override void OnKeyHolding()
+        {
+            print("test holding");
+        }
+
+        public override void OnKeyReleased()
+        {
+            print("test released");
         }
     }
 }

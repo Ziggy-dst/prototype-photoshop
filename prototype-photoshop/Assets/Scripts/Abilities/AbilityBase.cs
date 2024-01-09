@@ -6,9 +6,17 @@ namespace Abilities
 {
     public class AbilityBase : MonoBehaviour
     {
-        public InputHandler.TriggerCondition triggerCondition = 0;
+        public virtual void OnKeyPressed()
+        {
 
-        public virtual void UseAbility()
+        }
+
+        public virtual void OnKeyHolding()
+        {
+
+        }
+
+        public virtual void OnKeyReleased()
         {
 
         }

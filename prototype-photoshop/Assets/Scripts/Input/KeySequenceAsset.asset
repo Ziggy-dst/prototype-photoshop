@@ -16,3 +16,6 @@ MonoBehaviour:
   - keyModifier: 113
     keyTrigger: 323
     ability: {fileID: 0}
+  - keyModifier: 101
+    keyTrigger: 323
+    ability: {fileID: 0}
