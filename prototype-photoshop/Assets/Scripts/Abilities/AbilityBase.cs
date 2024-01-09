@@ -6,17 +6,32 @@ namespace Abilities
 {
     public class AbilityBase : MonoBehaviour
     {
-        public virtual void OnKeyPressed()
+        public virtual void OnKeyModifierPressed()
         {
 
         }
 
-        public virtual void OnKeyHolding()
+        public virtual void OnKeyModifierHolding()
         {
 
         }
 
-        public virtual void OnKeyReleased()
+        public virtual void OnKeyModifierReleased()
+        {
+
+        }
+
+        public virtual void OnKeyTriggerPressed()
+        {
+
+        }
+
+        public virtual void OnKeyTriggerHolding()
+        {
+
+        }
+
+        public virtual void OnKeyTriggerReleased()
         {
 
         }

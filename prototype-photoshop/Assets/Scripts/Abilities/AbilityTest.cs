@@ -6,17 +6,17 @@ namespace Abilities
 {
     public class AbilityTest : AbilityBase
     {
-        public override void OnKeyPressed()
+        public override void OnKeyTriggerPressed()
         {
             print("pressed");
         }
 
-        public override void OnKeyHolding()
+        public override void OnKeyTriggerHolding()
         {
             print("test holding");
         }
 
-        public override void OnKeyReleased()
+        public override void OnKeyTriggerReleased()
         {
             print("test released");
         }

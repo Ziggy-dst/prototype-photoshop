@@ -24,7 +24,7 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
+        HandleKeyMouseInput();
     }
 
     private void StructureAsset()
@@ -37,7 +37,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    private void HandleInput()
+    private void HandleKeyMouseInput()
     {
         // check if the pressed key is functional
         if (_keyModifiers.Contains(_currentPressedKeyCode))
@@ -58,6 +58,7 @@ public class InputHandler : MonoBehaviour
                 if (!_keySequence.Contains(item.keyModifier))
                 {
                     _keySequence.Add(item.keyModifier);
+                    item.ability.OnKeyModifierPressed();
                 }
             }
             if (Input.GetKeyDown(item.keyTrigger))
@@ -68,22 +69,28 @@ public class InputHandler : MonoBehaviour
                 }
             }
 
+            if (Input.GetKey(item.keyModifier))
+            {
+                item.ability.OnKeyModifierHolding();
+            }
+
             if (_keySequence.Count == 2)
             {
                 // only trigger the function when the modifier is pressed before the trigger
                 if (_keySequence.IndexOf(item.keyModifier) < _keySequence.IndexOf(item.keyTrigger))
                 {
-                    if (Input.GetKeyDown(item.keyTrigger)) item.ability.OnKeyPressed();
+                    if (Input.GetKeyDown(item.keyTrigger)) item.ability.OnKeyTriggerPressed();
 
-                    if (Input.GetKey(item.keyTrigger)) item.ability.OnKeyHolding();
+                    if (Input.GetKey(item.keyTrigger)) item.ability.OnKeyTriggerHolding();
 
-                    if (Input.GetKeyUp(item.keyTrigger)) item.ability.OnKeyReleased();
+                    if (Input.GetKeyUp(item.keyTrigger)) item.ability.OnKeyTriggerReleased();
                 }
             }
 
             if (Input.GetKeyUp(item.keyModifier))
             {
                 _keySequence.Remove(item.keyModifier);
+                item.ability.OnKeyModifierReleased();
             }
             if (Input.GetKeyUp(item.keyTrigger))
             {

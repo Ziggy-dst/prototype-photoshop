@@ -17,7 +17,7 @@ namespace Abilities
 
 
 
-        public override void OnKeyPressed()
+        public override void OnKeyTriggerPressed()
         {
             print("press 2");
             // origin = Input.mousePosition;
@@ -40,14 +40,14 @@ namespace Abilities
             // Vector3 end = new Vector3(1, 1, 0);
         }
 
-        public override void OnKeyHolding()
+        public override void OnKeyTriggerHolding()
         {
             print("holding 2");
             // 设置线段的位置
             // _lineRenderer.SetPosition(1, Input.mousePosition);
         }
 
-        public override void OnKeyReleased()
+        public override void OnKeyTriggerReleased()
         {
             print("release 2");
             // _lineRenderer.SetPosition(1, Input.mousePosition);
