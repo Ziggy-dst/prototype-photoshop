@@ -74,24 +74,16 @@ public class InputHandler : MonoBehaviour
                 item.ability.OnKeyModifierHolding();
             }
 
-            if (_keySequence.Count == 2)
+            // only trigger the function when the modifier is pressed before the trigger
+            if (_keySequence.IndexOf(item.keyModifier) < _keySequence.IndexOf(item.keyTrigger))
             {
-                // only trigger the function when the modifier is pressed before the trigger
-                if (_keySequence.IndexOf(item.keyModifier) < _keySequence.IndexOf(item.keyTrigger))
-                {
-                    if (Input.GetKeyDown(item.keyTrigger)) item.ability.OnKeyTriggerPressed();
+                if (Input.GetKeyDown(item.keyTrigger)) item.ability.OnKeyTriggerPressed();
 
-                    if (Input.GetKey(item.keyTrigger)) item.ability.OnKeyTriggerHolding();
+                if (Input.GetKey(item.keyTrigger)) item.ability.OnKeyTriggerHolding();
 
-                    if (Input.GetKeyUp(item.keyTrigger)) item.ability.OnKeyTriggerReleased();
-                }
+                if (Input.GetKeyUp(item.keyTrigger)) item.ability.OnKeyTriggerReleased();
             }
 
-            if (Input.GetKeyUp(item.keyModifier))
-            {
-                _keySequence.Remove(item.keyModifier);
-                item.ability.OnKeyModifierReleased();
-            }
             if (Input.GetKeyUp(item.keyTrigger))
             {
                 _keySequence.Remove(item.keyTrigger);
@@ -118,8 +110,13 @@ public class InputHandler : MonoBehaviour
             {
                 if (Event.current.keyCode == _currentPressedKeyCode)
                 {
-                    _currentPressedKeyCode = KeyCode.None;
+                    if (_keyModifiers.Contains(_currentPressedKeyCode))
+                    {
+                        int index = _keyModifiers.IndexOf(_currentPressedKeyCode);
+                        _abilities[index].OnKeyModifierReleased();
+                    }
                     // Debug.Log(_currentPressedKeyCode);
+                    _currentPressedKeyCode = KeyCode.None;
                 }
             }
         }
