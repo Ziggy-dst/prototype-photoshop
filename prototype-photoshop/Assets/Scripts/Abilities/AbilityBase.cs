@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,32 +7,56 @@ namespace Abilities
 {
     public class AbilityBase : MonoBehaviour
     {
-        public virtual void OnKeyModifierPressed()
+        public AbilityNames abilityName;
+
+        private void OnEnable()
+        {
+            InputHandler.OnKeyModifierPressed += OnKeyModifierPressed;
+            InputHandler.OnKeyModifierHolding += OnKeyModifierHolding;
+            InputHandler.OnKeyModifierReleased += OnKeyModifierReleased;
+
+            InputHandler.OnKeyTriggerPressed += OnKeyTriggerPressed;
+            InputHandler.OnKeyTriggerHolding += OnKeyTriggerHolding;
+            InputHandler.OnKeyTriggerReleased += OnKeyTriggerReleased;
+        }
+
+        private void OnDisable()
+        {
+            InputHandler.OnKeyModifierPressed -= OnKeyModifierPressed;
+            InputHandler.OnKeyModifierHolding -= OnKeyModifierHolding;
+            InputHandler.OnKeyModifierReleased -= OnKeyModifierReleased;
+
+            InputHandler.OnKeyTriggerPressed -= OnKeyTriggerPressed;
+            InputHandler.OnKeyTriggerHolding -= OnKeyTriggerHolding;
+            InputHandler.OnKeyTriggerReleased -= OnKeyTriggerReleased;
+        }
+
+        protected virtual void OnKeyModifierPressed(AbilityNames abilityName)
         {
 
         }
 
-        public virtual void OnKeyModifierHolding()
+        protected virtual void OnKeyModifierHolding(AbilityNames abilityName)
         {
 
         }
 
-        public virtual void OnKeyModifierReleased()
+        protected virtual void OnKeyModifierReleased(AbilityNames abilityName)
         {
 
         }
 
-        public virtual void OnKeyTriggerPressed()
+        protected virtual void OnKeyTriggerPressed(AbilityNames abilityName)
         {
 
         }
 
-        public virtual void OnKeyTriggerHolding()
+        protected virtual void OnKeyTriggerHolding(AbilityNames abilityName)
         {
 
         }
 
-        public virtual void OnKeyTriggerReleased()
+        protected virtual void OnKeyTriggerReleased(AbilityNames abilityName)
         {
 
         }

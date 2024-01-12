@@ -15,7 +15,10 @@ MonoBehaviour:
   keySequenceBindings:
   - keyModifier: 113
     keyTrigger: 323
-    ability: {fileID: 0}
+    abilityName: 0
+  - keyModifier: 119
+    keyTrigger: 323
+    abilityName: 1
   - keyModifier: 101
     keyTrigger: 323
-    ability: {fileID: 0}
+    abilityName: 2

@@ -28,15 +28,18 @@ namespace Abilities
 
         // draw line
         [SerializeField] private float drawDuration = 0.1f;
+        [SerializeField] private float lineLengthMagnifier = 2;
 
-        public override void OnKeyModifierReleased()
+        protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
-            base.OnKeyModifierReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
             RemoveLine();
         }
 
-        public override void OnKeyTriggerPressed()
+        protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
+
             origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             previousPosition = origin;
 
@@ -54,8 +57,10 @@ namespace Abilities
             _currentLineRenderer.endColor = endColor;
         }
 
-        public override void OnKeyTriggerHolding()
+        protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
+
             timer += Time.deltaTime;
 
             if (timer >= trackTimeInterval)
@@ -65,8 +70,10 @@ namespace Abilities
             }
         }
 
-        public override void OnKeyTriggerReleased()
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
+
             Vector2 endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // check if the line is long enough
@@ -77,10 +84,10 @@ namespace Abilities
 
                 _drawingLineRenderer = _currentLineRenderer;
 
-                // StartCoroutine(DrawLine(origin, calculatedEndPosition));
+                StartCoroutine(DrawLine(origin, calculatedEndPosition));
 
-                _currentLineRenderer.SetPosition(0, origin);
-                _currentLineRenderer.SetPosition(1, calculatedEndPosition);
+                // _currentLineRenderer.SetPosition(0, origin);
+                // _currentLineRenderer.SetPosition(1, calculatedEndPosition);
 
                 ResetLine();
             }
@@ -90,19 +97,19 @@ namespace Abilities
             }
         }
 
-        // IEnumerator DrawLine(Vector2 startPoint, Vector2 endPoint)
-        // {
-        //     float startTime = Time.time;
-        //     while (Time.time < startTime + drawDuration)
-        //     {
-        //         float t = (Time.time - startTime) / drawDuration;
-        //         Vector3 currentPoint = Vector3.Lerp(startPoint, endPoint, t);
-        //         _currentLineRenderer.SetPosition(0, startPoint);
-        //         _currentLineRenderer.SetPosition(1, currentPoint);
-        //         yield return null;
-        //     }
-        //     _currentLineRenderer.SetPosition(1, endPoint);
-        // }
+        IEnumerator DrawLine(Vector2 startPoint, Vector2 endPoint)
+        {
+            float startTime = Time.time;
+            while (Time.time < startTime + drawDuration)
+            {
+                float t = (Time.time - startTime) / drawDuration;
+                Vector3 currentPoint = Vector3.Lerp(startPoint, endPoint, t);
+                _drawingLineRenderer.SetPosition(0, startPoint);
+                _drawingLineRenderer.SetPosition(1, currentPoint);
+                yield return null;
+            }
+            _drawingLineRenderer.SetPosition(1, endPoint);
+        }
 
         private void TrackMouse()
         {
@@ -121,7 +128,7 @@ namespace Abilities
         private Vector2 GetAverageDirection()
         {
             if (trackPointCount > 0)
-                return totalDirection / trackPointCount;
+                return (totalDirection / trackPointCount) * lineLengthMagnifier;
             return Vector2.zero;
         }
 

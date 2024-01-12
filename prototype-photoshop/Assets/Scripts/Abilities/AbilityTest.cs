@@ -6,18 +6,21 @@ namespace Abilities
 {
     public class AbilityTest : AbilityBase
     {
-        public override void OnKeyTriggerPressed()
+        protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
             print("pressed");
         }
 
-        public override void OnKeyTriggerHolding()
+        protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
             print("test holding");
         }
 
-        public override void OnKeyTriggerReleased()
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
             print("test released");
         }
     }
