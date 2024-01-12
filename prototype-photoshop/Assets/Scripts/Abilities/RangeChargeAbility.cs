@@ -20,19 +20,22 @@ namespace CustomNamespace
         public AudioClip soundFX;
         
         
-        public override void OnKeyModifierPressed()
+        protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {
-            base.OnKeyModifierPressed();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyModifierPressed(abilityName);
         }
 
-        public override void OnKeyModifierReleased()
+        protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
-            base.OnKeyModifierReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyModifierReleased(abilityName);
         }
 
-        public override void OnKeyTriggerPressed()
+        protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
-            base.OnKeyTriggerPressed();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerPressed(abilityName);
             
             CursorManager.instance.HideCursor();
             
@@ -43,16 +46,18 @@ namespace CustomNamespace
             // AudioManager.instance.PlaySound(soundFX);
         }
 
-        public override void OnKeyTriggerHolding()
+        protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
-            base.OnKeyTriggerHolding();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerHolding(abilityName);
 
             chargeCircleInstance.transform.localScale += Vector3.one * Time.deltaTime;
         }
 
-        public override void OnKeyTriggerReleased()
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
-            base.OnKeyTriggerReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerReleased(abilityName);
             
             CursorManager.instance.ShowCursor();
             

@@ -1,4 +1,4 @@
-using System;
+using System;using System.Collections;
 using System.Collections.Generic;
 using Abilities;
 using UnityEngine;
@@ -20,5 +20,7 @@ public class ItemHolder
     public KeyCode keyModifier;
     public KeyCode keyTrigger;
 
-    public AbilityBase ability;
+    // public AbilityBase ability;
+    public AbilityNames abilityName;
 }
+

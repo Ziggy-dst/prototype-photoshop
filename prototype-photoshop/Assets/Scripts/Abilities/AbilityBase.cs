@@ -2,48 +2,61 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Abilities
 {
     public class AbilityBase : MonoBehaviour
     {
-        [Header("Ability Icon")]
-        public Sprite iconNormal;
-        public Sprite iconPressed;
-        public Image iconUI;
+        public AbilityNames abilityName;
 
-        public virtual void Awake()
+        private void OnEnable()
         {
-            iconUI.sprite = iconNormal;
+            InputHandler.OnKeyModifierPressed += OnKeyModifierPressed;
+            InputHandler.OnKeyModifierHolding += OnKeyModifierHolding;
+            InputHandler.OnKeyModifierReleased += OnKeyModifierReleased;
+
+            InputHandler.OnKeyTriggerPressed += OnKeyTriggerPressed;
+            InputHandler.OnKeyTriggerHolding += OnKeyTriggerHolding;
+            InputHandler.OnKeyTriggerReleased += OnKeyTriggerReleased;
         }
 
-        public virtual void OnKeyModifierPressed()
+        private void OnDisable()
         {
-            iconUI.sprite = iconPressed;
+            InputHandler.OnKeyModifierPressed -= OnKeyModifierPressed;
+            InputHandler.OnKeyModifierHolding -= OnKeyModifierHolding;
+            InputHandler.OnKeyModifierReleased -= OnKeyModifierReleased;
+
+            InputHandler.OnKeyTriggerPressed -= OnKeyTriggerPressed;
+            InputHandler.OnKeyTriggerHolding -= OnKeyTriggerHolding;
+            InputHandler.OnKeyTriggerReleased -= OnKeyTriggerReleased;
         }
 
-        public virtual void OnKeyModifierHolding()
-        {
-
-        }
-
-        public virtual void OnKeyModifierReleased()
-        {
-            iconUI.sprite = iconNormal;
-        }
-
-        public virtual void OnKeyTriggerPressed()
-        {
-
-        }
-
-        public virtual void OnKeyTriggerHolding()
+        protected virtual void OnKeyModifierPressed(AbilityNames abilityName)
         {
 
         }
 
-        public virtual void OnKeyTriggerReleased()
+        protected virtual void OnKeyModifierHolding(AbilityNames abilityName)
+        {
+
+        }
+
+        protected virtual void OnKeyModifierReleased(AbilityNames abilityName)
+        {
+
+        }
+
+        protected virtual void OnKeyTriggerPressed(AbilityNames abilityName)
+        {
+
+        }
+
+        protected virtual void OnKeyTriggerHolding(AbilityNames abilityName)
+        {
+
+        }
+
+        protected virtual void OnKeyTriggerReleased(AbilityNames abilityName)
         {
 
         }

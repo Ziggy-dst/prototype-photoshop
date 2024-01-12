@@ -16,14 +16,17 @@ namespace Abilities
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
 
-        public override void OnKeyModifierReleased()
+        protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
-            base.OnKeyModifierReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
+
             RemoveLine();
         }
 
-        public override void OnKeyTriggerPressed()
+        protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
+
             origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _currentLineRenderer = new GameObject("Line").AddComponent<LineRenderer>();
 
@@ -41,14 +44,18 @@ namespace Abilities
             _currentLineRenderer.SetPosition(0, origin);
         }
 
-        public override void OnKeyTriggerHolding()
+        protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
+
             // 设置线段的位置
             _currentLineRenderer.SetPosition(1, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 
-        public override void OnKeyTriggerReleased()
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
+            if (!abilityName.Equals(this.abilityName)) return;
+
             Vector2 endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // check if the line is long enough

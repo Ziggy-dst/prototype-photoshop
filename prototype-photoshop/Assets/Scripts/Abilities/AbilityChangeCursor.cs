@@ -10,15 +10,15 @@ namespace Abilities
         [Header("Cursor")] 
         public Sprite cursor;
         
-        public override void OnKeyModifierPressed()
+        protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {
-            base.OnKeyModifierPressed();
+            base.OnKeyModifierPressed(abilityName);
             CursorManager.instance.ChangeCursor(cursor);
         }
 
-        public override void OnKeyModifierReleased()
+        protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
-            base.OnKeyModifierReleased();
+            base.OnKeyModifierReleased(abilityName);
             CursorManager.instance.ResumeCursor();
         }
         

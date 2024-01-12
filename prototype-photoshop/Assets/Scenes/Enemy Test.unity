@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107526545}
   - component: {fileID: 107526547}
+  - component: {fileID: 107526548}
   - component: {fileID: 107526546}
   m_Layer: 5
   m_Name: Ability Icon
@@ -198,6 +199,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107526544}
   m_CullTransparentMesh: 1
+--- !u!114 &107526548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107526544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f99443b0a798044eaff6604dd1afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 0
+  iconNormal: {fileID: 21300000, guid: 43bf5d38a9d1341489bb210a01a5e96a, type: 3}
+  iconPressed: {fileID: 21300000, guid: b6c99d3b08bd4304d8a44b42740c112f, type: 3}
 --- !u!1 &159784195
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 159784196}
   - component: {fileID: 159784198}
+  - component: {fileID: 159784199}
   - component: {fileID: 159784197}
   m_Layer: 5
   m_Name: Ability Icon
@@ -273,6 +290,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159784195}
   m_CullTransparentMesh: 1
+--- !u!114 &159784199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159784195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f99443b0a798044eaff6604dd1afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 0
+  iconNormal: {fileID: 0}
+  iconPressed: {fileID: 0}
 --- !u!1 &163218738
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 365963558}
   - component: {fileID: 365963560}
+  - component: {fileID: 365963561}
   - component: {fileID: 365963559}
   m_Layer: 5
   m_Name: Ability Icon
@@ -498,6 +531,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365963557}
   m_CullTransparentMesh: 1
+--- !u!114 &365963561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365963557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f99443b0a798044eaff6604dd1afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 1
+  iconNormal: {fileID: 21300000, guid: 38256ab9e331d1f44abb1fa92912d350, type: 3}
+  iconPressed: {fileID: 21300000, guid: 517b70a9c1f5fcb41abe3c1b90fa2f03, type: 3}
 --- !u!1 &440471941
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +591,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &494094396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494094397}
+  - component: {fileID: 494094398}
+  m_Layer: 0
+  m_Name: LineSlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &494094397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494094396}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 582542787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &494094398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494094396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2576b1ff063147f4b7837992a78cf04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 2
+  startWidth: 0.1
+  endWidth: 0.1
+  startColor: {r: 0, g: 0, b: 0, a: 1}
+  endColor: {r: 0, g: 0, b: 0, a: 1}
+  minDrawLength: 5
+  trackTimeInterval: 0.01
+  trackingDistanceThreshold: 0.1
+  drawDuration: 0.1
+  lineLengthMagnifier: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +802,8 @@ Transform:
   - {fileID: 755357056}
   - {fileID: 1998081345}
   - {fileID: 1313319456}
+  - {fileID: 1074562711}
+  - {fileID: 494094397}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609821252
@@ -997,6 +1101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747063220}
   - component: {fileID: 747063222}
+  - component: {fileID: 747063223}
   - component: {fileID: 747063221}
   m_Layer: 5
   m_Name: Ability Icon
@@ -1062,6 +1167,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747063219}
   m_CullTransparentMesh: 1
+--- !u!114 &747063223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747063219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f99443b0a798044eaff6604dd1afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 2
+  iconNormal: {fileID: 21300000, guid: 38256ab9e331d1f44abb1fa92912d350, type: 3}
+  iconPressed: {fileID: 21300000, guid: 517b70a9c1f5fcb41abe3c1b90fa2f03, type: 3}
 --- !u!1 &755357055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,9 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab1077d58092c848904a7dc1a4a0a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconNormal: {fileID: 21300000, guid: 43bf5d38a9d1341489bb210a01a5e96a, type: 3}
-  iconPressed: {fileID: 21300000, guid: b6c99d3b08bd4304d8a44b42740c112f, type: 3}
-  iconUI: {fileID: 107526546}
+  abilityName: 0
   cursor: {fileID: 0}
   dotSize: 0.25
   damage: 0
@@ -1206,6 +1324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815261005}
   - component: {fileID: 815261007}
+  - component: {fileID: 815261008}
   - component: {fileID: 815261006}
   m_Layer: 5
   m_Name: Ability Icon
@@ -1271,6 +1390,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815261004}
   m_CullTransparentMesh: 1
+--- !u!114 &815261008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815261004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f99443b0a798044eaff6604dd1afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 3
+  iconNormal: {fileID: 21300000, guid: e0a42d7d94cc0e64198ecc49ba4ae1ec, type: 3}
+  iconPressed: {fileID: 21300000, guid: 740c29deceeabad40b9bbcebeb16627e, type: 3}
 --- !u!1 &828315311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828315312}
   - component: {fileID: 828315314}
+  - component: {fileID: 828315315}
   - component: {fileID: 828315313}
   m_Layer: 5
   m_Name: Ability Icon
@@ -1346,6 +1481,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828315311}
   m_CullTransparentMesh: 1
+--- !u!114 &828315315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828315311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f99443b0a798044eaff6604dd1afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 4
+  iconNormal: {fileID: 21300000, guid: e0a42d7d94cc0e64198ecc49ba4ae1ec, type: 3}
+  iconPressed: {fileID: 21300000, guid: 740c29deceeabad40b9bbcebeb16627e, type: 3}
 --- !u!1 &832392894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1795,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1074562710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074562711}
+  - component: {fileID: 1074562712}
+  m_Layer: 0
+  m_Name: CreateLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1074562711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074562710}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 582542787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1074562712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074562710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8901937e70df425f8a150a5e31e61e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 1
+  startWidth: 0.1
+  endWidth: 0.1
+  startColor: {r: 0, g: 0, b: 0, a: 1}
+  endColor: {r: 0, g: 0, b: 0, a: 1}
+  minDrawLength: 5
 --- !u!1 &1313319455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,9 +1889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a100b6b90ff3636418a831dae9a8bd72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconNormal: {fileID: 21300000, guid: e0a42d7d94cc0e64198ecc49ba4ae1ec, type: 3}
-  iconPressed: {fileID: 21300000, guid: 740c29deceeabad40b9bbcebeb16627e, type: 3}
-  iconUI: {fileID: 747063221}
+  abilityName: 4
   cursor: {fileID: 21300000, guid: 2bff07dc8e8176449b7538607a1b2787, type: 3}
   chargeSpeed: 1
   damage: 0
@@ -2544,9 +2742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929aafb726b7def4c82abbfcf04a4bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconNormal: {fileID: 21300000, guid: e0a42d7d94cc0e64198ecc49ba4ae1ec, type: 3}
-  iconPressed: {fileID: 21300000, guid: 740c29deceeabad40b9bbcebeb16627e, type: 3}
-  iconUI: {fileID: 365963559}
+  abilityName: 3
   cursor: {fileID: 21300000, guid: 8d65344d986397546b6f6d6af731df76, type: 3}
   maxDiagonalLength: 4
   damage: 0

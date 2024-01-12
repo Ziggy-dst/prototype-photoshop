@@ -7,7 +7,6 @@ namespace CustomNamespace
 {
     public class DotAbility : AbilityChangeCursor
     {
-        [Header("Main")]
         public float dotSize;
         public float damage; //not necessary
         public Sprite dotCursorSprite;
@@ -22,45 +21,46 @@ namespace CustomNamespace
         public AudioClip soundFX;
 
 
-        public override void OnKeyModifierPressed()
+        protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {
-            base.OnKeyModifierPressed();
-        }
-        
-        public override void OnKeyModifierReleased()
-        {
-            base.OnKeyModifierReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
         }
 
-        public override void OnKeyTriggerPressed()
+        protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
-            base.OnKeyTriggerPressed();
+            if (!abilityName.Equals(this.abilityName)) return;
+        }
+
+        protected override void OnKeyTriggerPressed(AbilityNames abilityName)
+        {
+            if (!abilityName.Equals(this.abilityName)) return;
 
             Collider2D[] clickedEnemies = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), dotSize);
             foreach (var enemyCollider2D in clickedEnemies)
             {
                 enemyCollider2D.GetComponent<Enemy>().Dead(); //Instant Kill, to be modified
             }
-            
+
             AudioManager.instance.PlaySound(soundFX);
         }
 
-        public override void OnKeyTriggerHolding()
+        protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
-            base.OnKeyTriggerHolding();
+            if (!abilityName.Equals(this.abilityName)) return;
             
             holdTimer += Time.deltaTime;
 
             if (holdTimer >= autoClickTimeThreshold)
             {
                 holdTimer -= autoClickFrequency;
-                if (autoClick) OnKeyTriggerPressed();
+                if (autoClick) OnKeyTriggerPressed(abilityName);
             }
         }
 
-        public override void OnKeyTriggerReleased()
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
-            base.OnKeyTriggerReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
+
             holdTimer = 0;
         }
     }

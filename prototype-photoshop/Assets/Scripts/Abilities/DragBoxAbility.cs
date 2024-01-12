@@ -28,19 +28,22 @@ namespace CustomNamespace
         [Header("Feedbacks")]
         public AudioClip soundFX;
         
-        public override void OnKeyModifierPressed()
+        protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {
-            base.OnKeyModifierPressed();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyModifierPressed(abilityName);
         }
 
-        public override void OnKeyModifierReleased()
+        protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
-            base.OnKeyModifierReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyModifierReleased(abilityName);
         }
 
-        public override void OnKeyTriggerPressed()
+        protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
-            base.OnKeyTriggerPressed();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerPressed(abilityName);
             
             origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             selectionBoxInstance = Instantiate(selectionBoxPrefab, origin, Quaternion.Euler(Vector3.zero));
@@ -51,9 +54,10 @@ namespace CustomNamespace
             // AudioManager.instance.PlaySound(soundFX);
         }
 
-        public override void OnKeyTriggerHolding()
+        protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
-            base.OnKeyTriggerHolding();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerHolding(abilityName);
             
             Vector2 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float boxWidth = endPos.x - origin.x;
@@ -73,9 +77,10 @@ namespace CustomNamespace
             FlipRange(boxWidth, boxHeight);
         }
 
-        public override void OnKeyTriggerReleased()
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
-            base.OnKeyTriggerReleased();
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerReleased(abilityName);
             
             Destroy(rangeArcHolder);
             List<Collider2D> selectedEnemies = new List<Collider2D>();
