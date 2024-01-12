@@ -22,10 +22,9 @@ public class EnemyGroupManager : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (transform.childCount <= 1) Destroy(gameObject);
     }
 }
