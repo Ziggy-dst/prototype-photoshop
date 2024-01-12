@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CustomNamespace
 {
-    public class DragBoxAbility : AbilityBase
+    public class DragBoxAbility : AbilityChangeCursor
     {
         private Vector2 origin;
         private GameObject selectionBoxInstance;
@@ -14,6 +14,7 @@ namespace CustomNamespace
         private LineRenderer rangeArcRenderer;
         private GameObject rangeArcHolder;
         
+        [Header("Main")]
         public float maxDiagonalLength;
         public float damage; //not necessary
         public GameObject selectionBoxPrefab;
@@ -27,17 +28,14 @@ namespace CustomNamespace
         [Header("Feedbacks")]
         public AudioClip soundFX;
         
-        
         public override void OnKeyModifierPressed()
         {
             base.OnKeyModifierPressed();
-            //TODO: Change Cursor
         }
 
         public override void OnKeyModifierReleased()
         {
             base.OnKeyModifierReleased();
-            //TODO: Change Cursor Back
         }
 
         public override void OnKeyTriggerPressed()

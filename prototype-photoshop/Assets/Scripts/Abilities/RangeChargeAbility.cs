@@ -6,11 +6,12 @@ using UnityEngine;
 
 namespace CustomNamespace
 {
-    public class RangeChargeAbility : AbilityBase
+    public class RangeChargeAbility : AbilityChangeCursor
     {
         private Vector2 origin;
         private GameObject chargeCircleInstance;
 
+        [Header("Main")]
         public float chargeSpeed;
         public float damage; //not necessary
         public GameObject chargeCirclePrefab;
@@ -22,18 +23,18 @@ namespace CustomNamespace
         public override void OnKeyModifierPressed()
         {
             base.OnKeyModifierPressed();
-            //TODO: Change Cursor
         }
 
         public override void OnKeyModifierReleased()
         {
             base.OnKeyModifierReleased();
-            //TODO: Change Cursor Back
         }
 
         public override void OnKeyTriggerPressed()
         {
             base.OnKeyTriggerPressed();
+            
+            CursorManager.instance.HideCursor();
             
             origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             chargeCircleInstance = Instantiate(chargeCirclePrefab, origin, Quaternion.Euler(Vector3.zero));
@@ -52,6 +53,8 @@ namespace CustomNamespace
         public override void OnKeyTriggerReleased()
         {
             base.OnKeyTriggerReleased();
+            
+            CursorManager.instance.ShowCursor();
             
             List<Collider2D> selectedEnemies = new List<Collider2D>();
             chargeCircleInstance.GetComponent<CircleCollider2D>().GetContacts(selectedEnemies);

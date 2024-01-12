@@ -5,8 +5,9 @@ using UnityEngine;
 
 namespace CustomNamespace
 {
-    public class DotAbility : AbilityBase
+    public class DotAbility : AbilityChangeCursor
     {
+        [Header("Main")]
         public float dotSize;
         public float damage; //not necessary
         public Sprite dotCursorSprite;
@@ -24,13 +25,11 @@ namespace CustomNamespace
         public override void OnKeyModifierPressed()
         {
             base.OnKeyModifierPressed();
-            //TODO: Change Cursor
         }
-
+        
         public override void OnKeyModifierReleased()
         {
             base.OnKeyModifierReleased();
-            //TODO: Change Cursor Back
         }
 
         public override void OnKeyTriggerPressed()
