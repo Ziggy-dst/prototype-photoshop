@@ -6,19 +6,21 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class LineSlashAbility : AbilityBase
+    public class LineSlashAbility : AbilityChangeCursor
     {
         private Vector2 origin;
         private LineRenderer _currentLineRenderer;
         private LineRenderer _drawingLineRenderer;
-
+        
+        [Header("Main")]
         [SerializeField] private float startWidth = 0.1f;
         [SerializeField] private float endWidth = 0.1f;
         [SerializeField] private Color startColor = Color.black;
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
+        [SerializeField] private float hitRange = 0.1f;
 
-        // direction
+        [Header("Direction")]
         private Vector2 totalDirection;
         private int trackPointCount;
         private Vector2 previousPosition;
@@ -26,7 +28,7 @@ namespace Abilities
         private float timer = 0f;
         [SerializeField] private float trackingDistanceThreshold = 1f;
 
-        // draw line
+        [Header("Draw Line")]
         [SerializeField] private float drawDuration = 0.1f;
         [SerializeField] private float lineLengthMagnifier = 2;
 
@@ -89,7 +91,7 @@ namespace Abilities
                 // _currentLineRenderer.SetPosition(0, origin);
                 // _currentLineRenderer.SetPosition(1, calculatedEndPosition);
 
-                ResetLine();
+                // ResetLine();
             }
             else
             {
@@ -109,6 +111,18 @@ namespace Abilities
                 yield return null;
             }
             _drawingLineRenderer.SetPosition(1, endPoint);
+            
+            //Effect
+            RemoveLine();
+            ResetLine();
+            Enemy[] enemyArray = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            foreach (var enemy in enemyArray)
+            {
+                if (DistancePointToLine(enemy.transform.position, origin, endPoint) <= hitRange)
+                {
+                    enemy.Dead();
+                }
+            }
         }
 
         private void TrackMouse()
@@ -147,6 +161,28 @@ namespace Abilities
                 Destroy(_currentLineRenderer.gameObject);
                 _currentLineRenderer = null;
             }
+        }
+        
+        public float DistancePointToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
+        {
+            Vector2 line = lineEnd - lineStart;
+            Vector2 pointToStart = point - lineStart;
+
+            float lineSquareLength = line.sqrMagnitude;
+            float dotProduct = Vector2.Dot(pointToStart, line);
+            float t = dotProduct / lineSquareLength;
+
+            if (t < 0)
+            {
+                return Vector2.Distance(point, lineStart);
+            }
+            else if (t > 1)
+            {
+                return Vector2.Distance(point, lineEnd);
+            }
+
+            Vector2 projection = lineStart + t * line;
+            return Vector2.Distance(point, projection);
         }
     }
 }

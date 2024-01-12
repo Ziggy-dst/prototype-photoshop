@@ -5,16 +5,18 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class CreateLineAbility : AbilityBase
+    public class CreateLineAbility : AbilityChangeCursor
     {
         private Vector2 origin;
         private LineRenderer _currentLineRenderer;
-
+        
+        [Header("Main")]
         [SerializeField] private float startWidth = 0.1f;
         [SerializeField] private float endWidth = 0.1f;
         [SerializeField] private Color startColor = Color.black;
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
+        [SerializeField] private float hitRange = 0.1f;
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
@@ -61,7 +63,20 @@ namespace Abilities
             // check if the line is long enough
             if (Vector2.Distance(origin, endPosition) >= minDrawLength)
             {
-                _currentLineRenderer.SetPosition(1, endPosition);
+                // _currentLineRenderer.SetPosition(1, endPosition);
+                
+                //Effect
+                RemoveLine();
+                Enemy[] enemyArray = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                foreach (var enemy in enemyArray)
+                {
+                    if (DistancePointToLine(enemy.transform.position, origin, endPosition) <= hitRange)
+                    {
+                        enemy.Dead();
+                    }
+                }
+                
+                
                 _currentLineRenderer = null;
             }
             else
@@ -77,6 +92,28 @@ namespace Abilities
                 Destroy(_currentLineRenderer.gameObject);
                 _currentLineRenderer = null;
             }
+        }
+        
+        public float DistancePointToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
+        {
+            Vector2 line = lineEnd - lineStart;
+            Vector2 pointToStart = point - lineStart;
+
+            float lineSquareLength = line.sqrMagnitude;
+            float dotProduct = Vector2.Dot(pointToStart, line);
+            float t = dotProduct / lineSquareLength;
+
+            if (t < 0)
+            {
+                return Vector2.Distance(point, lineStart);
+            }
+            else if (t > 1)
+            {
+                return Vector2.Distance(point, lineEnd);
+            }
+
+            Vector2 projection = lineStart + t * line;
+            return Vector2.Distance(point, projection);
         }
     }
 }
