@@ -9,6 +9,7 @@ namespace Abilities
     {
         private Vector2 origin;
         private LineRenderer _currentLineRenderer;
+        private BoxCollider2D _currentBoxCollider;
         
         [Header("Main")]
         [SerializeField] private float startWidth = 0.1f;
@@ -16,12 +17,12 @@ namespace Abilities
         [SerializeField] private Color startColor = Color.black;
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
-        [SerializeField] private float hitRange = 0.1f;
+        
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
-
+            base.OnKeyModifierReleased(abilityName);
             RemoveLine();
         }
 
@@ -44,14 +45,28 @@ namespace Abilities
             _currentLineRenderer.endColor = endColor;
 
             _currentLineRenderer.SetPosition(0, origin);
+            
+            // 生成碰撞盒
+            _currentBoxCollider = new GameObject("Line Collider").AddComponent<BoxCollider2D>();
+            _currentBoxCollider.isTrigger = true;
+            _currentBoxCollider.transform.parent = _currentLineRenderer.transform;
         }
 
         protected override void OnKeyTriggerHolding(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
 
+            Vector2 endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             // 设置线段的位置
-            _currentLineRenderer.SetPosition(1, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            _currentLineRenderer.SetPosition(1, endPoint);
+            
+            //设置碰撞盒的位置
+            _currentBoxCollider.size = new Vector2(Vector3.Distance(origin, endPoint),
+                startWidth > endWidth ? startWidth : endWidth);
+            _currentBoxCollider.transform.position = (origin + endPoint) / 2;
+            float angle = Mathf.Atan2(endPoint.y - origin.y, endPoint.x - origin.x) * Mathf.Rad2Deg;
+            _currentBoxCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         protected override void OnKeyTriggerReleased(AbilityNames abilityName)
@@ -66,18 +81,16 @@ namespace Abilities
                 // _currentLineRenderer.SetPosition(1, endPosition);
                 
                 //Effect
-                RemoveLine();
-                Enemy[] enemyArray = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-                foreach (var enemy in enemyArray)
+                List<Collider2D> selectedEnemies = new List<Collider2D>();
+                _currentBoxCollider.GetContacts(selectedEnemies);
+                foreach (var enemy in selectedEnemies)
                 {
-                    if (DistancePointToLine(enemy.transform.position, origin, endPosition) <= hitRange)
-                    {
-                        enemy.Dead();
-                    }
+                    enemy.GetComponent<Enemy>().Dead();
                 }
                 
-                
+                RemoveLine();
                 _currentLineRenderer = null;
+                _currentBoxCollider = null;
             }
             else
             {
@@ -92,28 +105,6 @@ namespace Abilities
                 Destroy(_currentLineRenderer.gameObject);
                 _currentLineRenderer = null;
             }
-        }
-        
-        public float DistancePointToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
-        {
-            Vector2 line = lineEnd - lineStart;
-            Vector2 pointToStart = point - lineStart;
-
-            float lineSquareLength = line.sqrMagnitude;
-            float dotProduct = Vector2.Dot(pointToStart, line);
-            float t = dotProduct / lineSquareLength;
-
-            if (t < 0)
-            {
-                return Vector2.Distance(point, lineStart);
-            }
-            else if (t > 1)
-            {
-                return Vector2.Distance(point, lineEnd);
-            }
-
-            Vector2 projection = lineStart + t * line;
-            return Vector2.Distance(point, projection);
         }
     }
 }

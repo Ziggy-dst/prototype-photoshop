@@ -11,6 +11,7 @@ namespace Abilities
         private Vector2 origin;
         private LineRenderer _currentLineRenderer;
         private LineRenderer _drawingLineRenderer;
+        private BoxCollider2D _currentBoxCollider;
         
         [Header("Main")]
         [SerializeField] private float startWidth = 0.1f;
@@ -18,7 +19,6 @@ namespace Abilities
         [SerializeField] private Color startColor = Color.black;
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
-        [SerializeField] private float hitRange = 0.1f;
 
         [Header("Direction")]
         private Vector2 totalDirection;
@@ -35,6 +35,7 @@ namespace Abilities
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyModifierReleased(abilityName);
             RemoveLine();
         }
 
@@ -85,6 +86,16 @@ namespace Abilities
                 Vector2 calculatedEndPosition = averageDirection + origin;
 
                 _drawingLineRenderer = _currentLineRenderer;
+                
+                // set collision box
+                _currentBoxCollider = new GameObject("Line Collider").AddComponent<BoxCollider2D>();
+                _currentBoxCollider.isTrigger = true;
+                _currentBoxCollider.transform.parent = _currentLineRenderer.transform;
+                _currentBoxCollider.size = new Vector2(Vector3.Distance(origin, calculatedEndPosition),
+                    startWidth > endWidth ? startWidth : endWidth);
+                _currentBoxCollider.transform.position = (origin + calculatedEndPosition) / 2;
+                float angle = Mathf.Atan2(calculatedEndPosition.y - origin.y, calculatedEndPosition.x - origin.x) * Mathf.Rad2Deg;
+                _currentBoxCollider.transform.rotation = Quaternion.Euler(0, 0, angle);
 
                 StartCoroutine(DrawLine(origin, calculatedEndPosition));
 
@@ -113,16 +124,15 @@ namespace Abilities
             _drawingLineRenderer.SetPosition(1, endPoint);
             
             //Effect
+            List<Collider2D> selectedEnemies = new List<Collider2D>();
+            _currentBoxCollider.GetContacts(selectedEnemies);
+            foreach (var enemy in selectedEnemies)
+            {
+                enemy.GetComponent<Enemy>().Dead();
+            }
             RemoveLine();
             ResetLine();
-            Enemy[] enemyArray = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-            foreach (var enemy in enemyArray)
-            {
-                if (DistancePointToLine(enemy.transform.position, origin, endPoint) <= hitRange)
-                {
-                    enemy.Dead();
-                }
-            }
+            
         }
 
         private void TrackMouse()
@@ -161,28 +171,6 @@ namespace Abilities
                 Destroy(_currentLineRenderer.gameObject);
                 _currentLineRenderer = null;
             }
-        }
-        
-        public float DistancePointToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
-        {
-            Vector2 line = lineEnd - lineStart;
-            Vector2 pointToStart = point - lineStart;
-
-            float lineSquareLength = line.sqrMagnitude;
-            float dotProduct = Vector2.Dot(pointToStart, line);
-            float t = dotProduct / lineSquareLength;
-
-            if (t < 0)
-            {
-                return Vector2.Distance(point, lineStart);
-            }
-            else if (t > 1)
-            {
-                return Vector2.Distance(point, lineEnd);
-            }
-
-            Vector2 projection = lineStart + t * line;
-            return Vector2.Distance(point, projection);
         }
     }
 }
