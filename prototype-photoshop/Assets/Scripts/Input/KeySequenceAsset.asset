@@ -16,15 +16,15 @@ MonoBehaviour:
   - keyModifier: 113
     keyTrigger: 323
     abilityName: 0
-  - keyModifier: 119
+  - keyModifier: 49
     keyTrigger: 323
     abilityName: 1
-  - keyModifier: 101
+  - keyModifier: 50
     keyTrigger: 323
     abilityName: 2
-  - keyModifier: 114
+  - keyModifier: 282
     keyTrigger: 323
     abilityName: 3
-  - keyModifier: 116
+  - keyModifier: 283
     keyTrigger: 323
     abilityName: 4

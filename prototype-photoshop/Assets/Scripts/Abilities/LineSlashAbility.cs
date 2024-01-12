@@ -51,7 +51,7 @@ namespace Abilities
             _currentLineRenderer.startWidth = startWidth;
             _currentLineRenderer.endWidth = endWidth;
 
-            _currentLineRenderer.numCapVertices = 10;
+            // _currentLineRenderer.numCapVertices = 10;
 
             // 设置线的颜色
             _currentLineRenderer.material = new Material(Shader.Find("Sprites/Default"));

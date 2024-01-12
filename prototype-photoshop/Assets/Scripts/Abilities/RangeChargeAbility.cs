@@ -51,7 +51,7 @@ namespace CustomNamespace
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyTriggerHolding(abilityName);
 
-            chargeCircleInstance.transform.localScale += Vector3.one * Time.deltaTime;
+            chargeCircleInstance.transform.localScale += Vector3.one * Time.deltaTime * chargeSpeed;
         }
 
         protected override void OnKeyTriggerReleased(AbilityNames abilityName)
