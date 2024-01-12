@@ -21,7 +21,6 @@ namespace Abilities
             base.OnKeyModifierReleased(abilityName);
             CursorManager.instance.ResumeCursor();
         }
-        
     }
 }
 

@@ -32,5 +32,12 @@ namespace CustomNamespace
             if (!abilityName.Equals(this.abilityName)) return;
             iconUI.sprite = iconNormal;
         }
+
+        protected override void OnKeyModifierSwitched(AbilityNames abilityName)
+        {
+            if (!abilityName.Equals(this.abilityName)) return;
+
+            iconUI.sprite = iconNormal;
+        }
     }
 }

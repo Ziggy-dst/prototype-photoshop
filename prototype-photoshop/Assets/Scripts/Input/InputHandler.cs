@@ -13,6 +13,8 @@ public class InputHandler : MonoBehaviour
     public static Action<AbilityNames> OnKeyTriggerHolding;
     public static Action<AbilityNames> OnKeyTriggerReleased;
 
+    public static Action<AbilityNames> OnKeyModifierSwitched;
+
     public KeySequenceAsset keySequenceAsset;
 
     private KeyCode _currentPressedKeyCode = KeyCode.None;
@@ -54,10 +56,13 @@ public class InputHandler : MonoBehaviour
 
             // check if the pressed key has changed
             if (_lastItemIndex >= 0)
+            {
                 if (itemIndex != _lastItemIndex)
                 {
                     _keySequence.Clear();
+                    OnKeyModifierSwitched(_abilityNames[_lastItemIndex]);
                 }
+            }
 
             _lastItemIndex = itemIndex;
 
@@ -114,7 +119,7 @@ public class InputHandler : MonoBehaviour
         {
             if (Event.current.type == EventType.KeyDown)
             {
-                if (Event.current.keyCode != KeyCode.None)
+                if (_keyModifiers.Contains(Event.current.keyCode))
                 {
                     _currentPressedKeyCode = Event.current.keyCode;
                     // Debug.Log(_currentPressedKeyCode);
@@ -124,13 +129,10 @@ public class InputHandler : MonoBehaviour
             {
                 if (Event.current.keyCode == _currentPressedKeyCode)
                 {
-                    if (_keyModifiers.Contains(_currentPressedKeyCode))
-                    {
-                        int index = _keyModifiers.IndexOf(_currentPressedKeyCode);
-                        OnKeyModifierReleased(_abilityNames[index]);
-                        // _abilities[index].OnKeyModifierReleased();
-                        _keySequence.Remove(_keyModifiers[index]);
-                    }
+                    int index = _keyModifiers.IndexOf(_currentPressedKeyCode);
+                    OnKeyModifierReleased(_abilityNames[index]);
+                    // _abilities[index].OnKeyModifierReleased();
+                    _keySequence.Remove(_keyModifiers[index]);
                     // Debug.Log(_currentPressedKeyCode);
                     _currentPressedKeyCode = KeyCode.None;
                 }

@@ -99,6 +99,13 @@ namespace Abilities
             }
         }
 
+        protected override void OnKeyModifierSwitched(AbilityNames abilityName)
+        {
+            if (!abilityName.Equals(this.abilityName)) return;
+
+            RemoveLine();
+        }
+
         IEnumerator DrawLine(Vector2 startPoint, Vector2 endPoint)
         {
             float startTime = Time.time;
@@ -122,6 +129,15 @@ namespace Abilities
                 {
                     enemy.Dead();
                 }
+            }
+        }
+
+        private void RemoveLine()
+        {
+            if (_currentLineRenderer != null)
+            {
+                Destroy(_currentLineRenderer.gameObject);
+                _currentLineRenderer = null;
             }
         }
 
@@ -154,15 +170,6 @@ namespace Abilities
             timer = 0;
         }
 
-        private void RemoveLine()
-        {
-            if (_currentLineRenderer != null)
-            {
-                Destroy(_currentLineRenderer.gameObject);
-                _currentLineRenderer = null;
-            }
-        }
-        
         public float DistancePointToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
         {
             Vector2 line = lineEnd - lineStart;

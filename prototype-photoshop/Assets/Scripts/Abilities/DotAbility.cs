@@ -20,20 +20,26 @@ namespace CustomNamespace
         [Header("Feedbacks")]
         public AudioClip soundFX;
 
-
         protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
+
+            base.OnKeyModifierPressed(abilityName);
         }
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
+
+            base.OnKeyModifierReleased(abilityName);
         }
 
         protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
+
+            // reset
+            holdTimer = 0;
 
             Collider2D[] clickedEnemies = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), dotSize);
             foreach (var enemyCollider2D in clickedEnemies)
@@ -55,13 +61,6 @@ namespace CustomNamespace
                 holdTimer -= autoClickFrequency;
                 if (autoClick) OnKeyTriggerPressed(abilityName);
             }
-        }
-
-        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
-        {
-            if (!abilityName.Equals(this.abilityName)) return;
-
-            holdTimer = 0;
         }
     }
 }

@@ -30,6 +30,9 @@ namespace CustomNamespace
         {
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyModifierReleased(abilityName);
+
+            CursorManager.instance.ShowCursor();
+            RemoveCircle();
         }
 
         protected override void OnKeyTriggerPressed(AbilityNames abilityName)
@@ -58,16 +61,28 @@ namespace CustomNamespace
         {
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyTriggerReleased(abilityName);
-            
-            CursorManager.instance.ShowCursor();
-            
+
             List<Collider2D> selectedEnemies = new List<Collider2D>();
             chargeCircleInstance.GetComponent<CircleCollider2D>().GetContacts(selectedEnemies);
             foreach (var enemy in selectedEnemies)
             {
                 enemy.GetComponent<Enemy>().Dead();
             }
-            
+
+            CursorManager.instance.ShowCursor();
+            RemoveCircle();
+        }
+
+        protected override void OnKeyModifierSwitched(AbilityNames abilityName)
+        {
+            if (!abilityName.Equals(this.abilityName)) return;
+
+            CursorManager.instance.ShowCursor();
+            RemoveCircle();
+        }
+
+        private void RemoveCircle()
+        {
             Destroy(chargeCircleInstance);
         }
     }

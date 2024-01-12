@@ -38,6 +38,8 @@ namespace CustomNamespace
         {
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyModifierReleased(abilityName);
+
+            RemoveBox();
         }
 
         protected override void OnKeyTriggerPressed(AbilityNames abilityName)
@@ -81,15 +83,27 @@ namespace CustomNamespace
         {
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyTriggerReleased(abilityName);
-            
-            Destroy(rangeArcHolder);
+
             List<Collider2D> selectedEnemies = new List<Collider2D>();
             selectionBoxInstance.GetComponent<BoxCollider2D>().GetContacts(selectedEnemies);
             foreach (var enemy in selectedEnemies)
             {
                 enemy.GetComponent<Enemy>().Dead();
             }
-            
+
+            RemoveBox();
+        }
+
+        protected override void OnKeyModifierSwitched(AbilityNames abilityName)
+        {
+            if (!abilityName.Equals(this.abilityName)) return;
+
+            RemoveBox();
+        }
+
+        private void RemoveBox()
+        {
+            Destroy(rangeArcHolder);
             Destroy(selectionBoxInstance);
         }
 

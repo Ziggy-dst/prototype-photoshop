@@ -18,6 +18,8 @@ namespace Abilities
             InputHandler.OnKeyTriggerPressed += OnKeyTriggerPressed;
             InputHandler.OnKeyTriggerHolding += OnKeyTriggerHolding;
             InputHandler.OnKeyTriggerReleased += OnKeyTriggerReleased;
+
+            InputHandler.OnKeyModifierSwitched += OnKeyModifierSwitched;
         }
 
         private void OnDisable()
@@ -29,6 +31,8 @@ namespace Abilities
             InputHandler.OnKeyTriggerPressed -= OnKeyTriggerPressed;
             InputHandler.OnKeyTriggerHolding -= OnKeyTriggerHolding;
             InputHandler.OnKeyTriggerReleased -= OnKeyTriggerReleased;
+
+            InputHandler.OnKeyModifierSwitched -= OnKeyModifierSwitched;
         }
 
         protected virtual void OnKeyModifierPressed(AbilityNames abilityName)
@@ -57,6 +61,11 @@ namespace Abilities
         }
 
         protected virtual void OnKeyTriggerReleased(AbilityNames abilityName)
+        {
+
+        }
+
+        protected virtual void OnKeyModifierSwitched(AbilityNames abilityName)
         {
 
         }
