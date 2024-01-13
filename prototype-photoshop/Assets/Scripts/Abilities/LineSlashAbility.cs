@@ -20,6 +20,8 @@ namespace Abilities
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
 
+        private bool canDrawNewLine = true;
+
         [Header("Direction")]
         private Vector2 totalDirection;
         private int trackPointCount;
@@ -43,6 +45,8 @@ namespace Abilities
         {
             if (!abilityName.Equals(this.abilityName)) return;
 
+            if (!canDrawNewLine) return;
+
             origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             previousPosition = origin;
 
@@ -64,6 +68,8 @@ namespace Abilities
         {
             if (!abilityName.Equals(this.abilityName)) return;
 
+            if (!canDrawNewLine) return;
+
             timer += Time.deltaTime;
 
             if (timer >= trackTimeInterval)
@@ -76,6 +82,8 @@ namespace Abilities
         protected override void OnKeyTriggerReleased(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
+
+            if (!canDrawNewLine || _currentLineRenderer == null) return;
 
             Vector2 endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -119,6 +127,8 @@ namespace Abilities
 
         IEnumerator DrawLine(Vector2 startPoint, Vector2 endPoint)
         {
+            canDrawNewLine = false;
+
             float startTime = Time.time;
             while (Time.time < startTime + drawDuration)
             {
@@ -129,7 +139,7 @@ namespace Abilities
                 yield return null;
             }
             _drawingLineRenderer.SetPosition(1, endPoint);
-            
+
             //Effect
             List<Collider2D> selectedEnemies = new List<Collider2D>();
             _currentBoxCollider.GetContacts(selectedEnemies);
@@ -139,7 +149,8 @@ namespace Abilities
             }
             RemoveLine();
             ResetLine();
-            
+
+            canDrawNewLine = true;
         }
 
         private void TrackMouse()
