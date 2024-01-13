@@ -13,7 +13,6 @@ namespace CustomNamespace
         private Vector2 direction;
         void Start()
         {
-            rb2DArray = GetComponentsInChildren<Rigidbody2D>();
             Vector3 targetPos = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
             direction = (targetPos - transform.position).normalized;
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
@@ -22,10 +21,13 @@ namespace CustomNamespace
         
         void Update()
         {
+            rb2DArray = GetComponentsInChildren<Rigidbody2D>();
             foreach (var rb2D in rb2DArray)
             {
                 rb2D.velocity = direction * moveSpeed;
             }
+            
+            if(transform.childCount == 0) Destroy(gameObject);
         }
 
         void SelfDestroy()
