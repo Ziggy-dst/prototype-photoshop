@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class InflatingEnemy : Enemy
@@ -25,6 +26,7 @@ public class InflatingEnemy : Enemy
         {
             _spriteRenderer.color = new Color32(154, 69, 41, 255);
             _spriteRenderer.sortingOrder = -1;
+            Destroy(this);
         }
         else transform.localScale += Vector3.one * Time.deltaTime;
     }
