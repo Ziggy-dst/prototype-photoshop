@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CustomNamespace
 {
-    public class LineEnemy : Enemy
+    public class LineEnemy : MonoBehaviour
     {
         public float lifeTime;
         public float moveSpeed;
@@ -16,7 +16,7 @@ namespace CustomNamespace
             rb2DArray = GetComponentsInChildren<Rigidbody2D>();
             Vector3 targetPos = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
             direction = (targetPos - transform.position).normalized;
-
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
             Invoke("SelfDestroy", lifeTime);
         }
         
