@@ -6,14 +6,24 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+    public static Action<AbilityNames> OnKeyModifierPressed;
+    public static Action<AbilityNames> OnKeyModifierHolding;
+    public static Action<AbilityNames> OnKeyModifierReleased;
+    public static Action<AbilityNames> OnKeyTriggerPressed;
+    public static Action<AbilityNames> OnKeyTriggerHolding;
+    public static Action<AbilityNames> OnKeyTriggerReleased;
+
+    public static Action<AbilityNames> OnKeyModifierSwitched;
+
     public KeySequenceAsset keySequenceAsset;
 
     private KeyCode _currentPressedKeyCode = KeyCode.None;
     private int _lastItemIndex = -1;
 
     private List<KeyCode> _keyModifiers = new List<KeyCode>();
-    private List<KeyCode> _keyTriggers = new List<KeyCode>();
-    private List<AbilityBase> _abilities = new List<AbilityBase>();
+    // private List<KeyCode> _keyTriggers = new List<KeyCode>();
+    // private List<AbilityBase> _abilities = new List<AbilityBase>();
+    private List<AbilityNames> _abilityNames = new List<AbilityNames>();
 
     private List<KeyCode> _keySequence = new List<KeyCode>(2);
 
@@ -24,7 +34,7 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
+        HandleKeyMouseInput();
     }
 
     private void StructureAsset()
@@ -32,12 +42,12 @@ public class InputHandler : MonoBehaviour
         foreach (var item in keySequenceAsset.keySequenceBindings)
         {
             _keyModifiers.Add(item.keyModifier);
-            _keyTriggers.Add(item.keyTrigger);
-            _abilities.Add(item.ability);
+            // _abilities.Add(item.ability);
+            _abilityNames.Add(item.abilityName);
         }
     }
 
-    private void HandleInput()
+    private void HandleKeyMouseInput()
     {
         // check if the pressed key is functional
         if (_keyModifiers.Contains(_currentPressedKeyCode))
@@ -46,7 +56,13 @@ public class InputHandler : MonoBehaviour
 
             // check if the pressed key has changed
             if (_lastItemIndex >= 0)
-                if (itemIndex != _lastItemIndex) _keySequence.Clear();
+            {
+                if (itemIndex != _lastItemIndex)
+                {
+                    _keySequence.Clear();
+                    OnKeyModifierSwitched(_abilityNames[_lastItemIndex]);
+                }
+            }
 
             _lastItemIndex = itemIndex;
 
@@ -58,6 +74,7 @@ public class InputHandler : MonoBehaviour
                 if (!_keySequence.Contains(item.keyModifier))
                 {
                     _keySequence.Add(item.keyModifier);
+                    OnKeyModifierPressed(item.abilityName);
                 }
             }
             if (Input.GetKeyDown(item.keyTrigger))
@@ -68,23 +85,24 @@ public class InputHandler : MonoBehaviour
                 }
             }
 
-            if (_keySequence.Count == 2)
+            if (Input.GetKey(item.keyModifier))
             {
-                // only trigger the function when the modifier is pressed before the trigger
-                if (_keySequence.IndexOf(item.keyModifier) < _keySequence.IndexOf(item.keyTrigger))
-                {
-                    if (Input.GetKeyDown(item.keyTrigger)) item.ability.OnKeyPressed();
-
-                    if (Input.GetKey(item.keyTrigger)) item.ability.OnKeyHolding();
-
-                    if (Input.GetKeyUp(item.keyTrigger)) item.ability.OnKeyReleased();
-                }
+                OnKeyModifierHolding(item.abilityName);
             }
 
-            if (Input.GetKeyUp(item.keyModifier))
+            // only trigger the function when the modifier is pressed before the trigger
+            if (_keySequence.IndexOf(item.keyModifier) < _keySequence.IndexOf(item.keyTrigger))
             {
-                _keySequence.Remove(item.keyModifier);
+                if (Input.GetKeyDown(item.keyTrigger)) OnKeyTriggerPressed(item.abilityName);
+                // if (Input.GetKeyDown(item.keyTrigger)) item.ability.OnKeyTriggerPressed();
+
+                if (Input.GetKey(item.keyTrigger)) OnKeyTriggerHolding(item.abilityName);
+                // if (Input.GetKey(item.keyTrigger)) item.ability.OnKeyTriggerHolding();
+
+                if (Input.GetKeyUp(item.keyTrigger)) OnKeyTriggerReleased(item.abilityName);
+                // if (Input.GetKeyUp(item.keyTrigger)) item.ability.OnKeyTriggerReleased();
             }
+
             if (Input.GetKeyUp(item.keyTrigger))
             {
                 _keySequence.Remove(item.keyTrigger);
@@ -101,7 +119,7 @@ public class InputHandler : MonoBehaviour
         {
             if (Event.current.type == EventType.KeyDown)
             {
-                if (Event.current.keyCode != KeyCode.None)
+                if (_keyModifiers.Contains(Event.current.keyCode))
                 {
                     _currentPressedKeyCode = Event.current.keyCode;
                     // Debug.Log(_currentPressedKeyCode);
@@ -111,8 +129,12 @@ public class InputHandler : MonoBehaviour
             {
                 if (Event.current.keyCode == _currentPressedKeyCode)
                 {
-                    _currentPressedKeyCode = KeyCode.None;
+                    int index = _keyModifiers.IndexOf(_currentPressedKeyCode);
+                    OnKeyModifierReleased(_abilityNames[index]);
+                    // _abilities[index].OnKeyModifierReleased();
+                    _keySequence.Remove(_keyModifiers[index]);
                     // Debug.Log(_currentPressedKeyCode);
+                    _currentPressedKeyCode = KeyCode.None;
                 }
             }
         }
