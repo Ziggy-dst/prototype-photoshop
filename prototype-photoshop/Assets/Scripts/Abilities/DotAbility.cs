@@ -9,7 +9,7 @@ namespace CustomNamespace
     {
         public float dotSize;
         public float damage; //not necessary
-        public Sprite dotCursorSprite;
+        public Sprite dotCursorPressedSprite;
 
         [Header("Auto Click")] 
         public bool autoClick;
@@ -23,21 +23,19 @@ namespace CustomNamespace
         protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
-
             base.OnKeyModifierPressed(abilityName);
         }
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
-
             base.OnKeyModifierReleased(abilityName);
         }
 
         protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
-
+            
             // reset
             holdTimer = 0;
 
@@ -48,6 +46,7 @@ namespace CustomNamespace
             }
 
             AudioManager.instance.PlaySound(soundFX);
+            CursorManager.instance.ChangeCursor(dotCursorPressedSprite);
         }
 
         protected override void OnKeyTriggerHolding(AbilityNames abilityName)
@@ -61,6 +60,13 @@ namespace CustomNamespace
                 holdTimer -= autoClickFrequency;
                 if (autoClick) OnKeyTriggerPressed(abilityName);
             }
+        }
+
+        protected override void OnKeyTriggerReleased(AbilityNames abilityName)
+        {
+            if (!abilityName.Equals(this.abilityName)) return;
+            base.OnKeyTriggerReleased(abilityName);
+            CursorManager.instance.ChangeCursor(cursor);
         }
     }
 }

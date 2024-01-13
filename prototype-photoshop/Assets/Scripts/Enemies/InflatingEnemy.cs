@@ -26,6 +26,7 @@ public class InflatingEnemy : Enemy
         {
             _spriteRenderer.color = new Color32(154, 69, 41, 255);
             _spriteRenderer.sortingOrder = -1;
+            Destroy(gameObject.GetComponent<CircleCollider2D>());
             Destroy(this);
         }
         else transform.localScale += Vector3.one * Time.deltaTime;

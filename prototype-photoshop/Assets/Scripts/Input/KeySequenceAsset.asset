@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: KeySequenceAsset
   m_EditorClassIdentifier: 
   keySequenceBindings:
-  - keyModifier: 113
-    keyTrigger: 323
-    abilityName: 0
   - keyModifier: 49
     keyTrigger: 323
     abilityName: 1
@@ -28,3 +25,6 @@ MonoBehaviour:
   - keyModifier: 283
     keyTrigger: 323
     abilityName: 4
+  - keyModifier: 113
+    keyTrigger: 323
+    abilityName: 0
