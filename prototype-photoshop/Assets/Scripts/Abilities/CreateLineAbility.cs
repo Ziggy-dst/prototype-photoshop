@@ -89,8 +89,6 @@ namespace Abilities
                 }
                 
                 RemoveLine();
-                _currentLineRenderer = null;
-                _currentBoxCollider = null;
             }
             else
             {
@@ -112,6 +110,7 @@ namespace Abilities
                 Destroy(_currentLineRenderer.gameObject);
                 _currentLineRenderer = null;
             }
+            _currentBoxCollider = null;
         }
     }
 }

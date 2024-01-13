@@ -17,11 +17,11 @@ public class InputHandler : MonoBehaviour
 
     public KeySequenceAsset keySequenceAsset;
 
-    private KeyCode _currentPressedKeyCode = KeyCode.None;
+    private KeyCode _currentPressedKeyModifier = KeyCode.None;
     private int _lastItemIndex = -1;
 
     private List<KeyCode> _keyModifiers = new List<KeyCode>();
-    // private List<KeyCode> _keyTriggers = new List<KeyCode>();
+    private List<KeyCode> _keyTriggers = new List<KeyCode>();
     // private List<AbilityBase> _abilities = new List<AbilityBase>();
     private List<AbilityNames> _abilityNames = new List<AbilityNames>();
 
@@ -42,6 +42,7 @@ public class InputHandler : MonoBehaviour
         foreach (var item in keySequenceAsset.keySequenceBindings)
         {
             _keyModifiers.Add(item.keyModifier);
+            _keyTriggers.Add(item.keyTrigger);
             // _abilities.Add(item.ability);
             _abilityNames.Add(item.abilityName);
         }
@@ -50,9 +51,9 @@ public class InputHandler : MonoBehaviour
     private void HandleKeyMouseInput()
     {
         // check if the pressed key is functional
-        if (_keyModifiers.Contains(_currentPressedKeyCode))
+        if (_keyModifiers.Contains(_currentPressedKeyModifier))
         {
-            int itemIndex = _keyModifiers.IndexOf(_currentPressedKeyCode);
+            int itemIndex = _keyModifiers.IndexOf(_currentPressedKeyModifier);
 
             // check if the pressed key has changed
             if (_lastItemIndex >= 0)
@@ -121,20 +122,21 @@ public class InputHandler : MonoBehaviour
             {
                 if (_keyModifiers.Contains(Event.current.keyCode))
                 {
-                    _currentPressedKeyCode = Event.current.keyCode;
-                    // Debug.Log(_currentPressedKeyCode);
+                    _currentPressedKeyModifier = Event.current.keyCode;
+                    // Debug.Log(_currentPressedKeyModifier);
                 }
             }
             else if (Event.current.type == EventType.KeyUp)
             {
-                if (Event.current.keyCode == _currentPressedKeyCode)
+                if (Event.current.keyCode == _currentPressedKeyModifier)
                 {
-                    int index = _keyModifiers.IndexOf(_currentPressedKeyCode);
+                    int index = _keyModifiers.IndexOf(_currentPressedKeyModifier);
                     OnKeyModifierReleased(_abilityNames[index]);
                     // _abilities[index].OnKeyModifierReleased();
                     _keySequence.Remove(_keyModifiers[index]);
-                    // Debug.Log(_currentPressedKeyCode);
-                    _currentPressedKeyCode = KeyCode.None;
+                    _keySequence.Remove(_keyTriggers[index]);
+                    // Debug.Log(_currentPressedKeyModifier);
+                    _currentPressedKeyModifier = KeyCode.None;
                 }
             }
         }
