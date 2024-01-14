@@ -24,6 +24,9 @@ namespace CustomNamespace
         {
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyModifierPressed(abilityName);
+            
+            // reset
+            holdTimer = 0;
         }
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
@@ -35,9 +38,6 @@ namespace CustomNamespace
         protected override void OnKeyTriggerPressed(AbilityNames abilityName)
         {
             if (!abilityName.Equals(this.abilityName)) return;
-            
-            // reset
-            holdTimer = 0;
 
             Collider2D[] clickedEnemies = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), dotSize);
             foreach (var enemyCollider2D in clickedEnemies)
@@ -66,6 +66,8 @@ namespace CustomNamespace
         {
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyTriggerReleased(abilityName);
+            // reset
+            holdTimer = 0;
             CursorManager.instance.ChangeCursor(cursor);
         }
     }
