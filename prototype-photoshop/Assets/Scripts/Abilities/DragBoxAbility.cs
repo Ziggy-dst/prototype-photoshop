@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Abilities;
+using Managers;
 using UnityEngine;
 
-namespace CustomNamespace
+namespace Abilities
 {
     public class DragBoxAbility : AbilityChangeCursor
     {
@@ -90,6 +91,8 @@ namespace CustomNamespace
             {
                 enemy.GetComponent<Enemy>().Dead();
             }
+            
+            AudioManager.instance.PlaySound(soundFX);
 
             RemoveBox();
         }

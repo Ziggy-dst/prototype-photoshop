@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Abilities;
+using Managers;
 using UnityEngine;
 
-namespace CustomNamespace
+namespace Abilities
 {
     public class RangeChargeAbility : AbilityChangeCursor
     {
@@ -70,6 +71,7 @@ namespace CustomNamespace
             }
 
             CursorManager.instance.ShowCursor();
+            AudioManager.instance.PlaySound(soundFX);
             RemoveCircle();
         }
 

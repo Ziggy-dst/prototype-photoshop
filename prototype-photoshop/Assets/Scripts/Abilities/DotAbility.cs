@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Abilities;
+using Managers;
 using UnityEngine;
 
-namespace CustomNamespace
+namespace Abilities
 {
     public class DotAbility : AbilityChangeCursor
     {

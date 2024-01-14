@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Abilities;
+using Managers;
 using UnityEngine;
 
 namespace Abilities
@@ -34,6 +35,9 @@ namespace Abilities
         [Header("Draw Line")]
         [SerializeField] private float drawDuration = 0.1f;
         [SerializeField] private float lineLengthMagnifier = 2;
+        
+        [Header("Feedbacks")]
+        public AudioClip soundFX;
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
         {
@@ -153,6 +157,8 @@ namespace Abilities
             ResetLine();
 
             canDrawNewLine = true;
+            
+            AudioManager.instance.PlaySound(soundFX);
         }
 
         private void TrackMouse()

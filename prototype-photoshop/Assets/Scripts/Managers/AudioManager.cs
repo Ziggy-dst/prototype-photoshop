@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
-namespace CustomNamespace
+namespace Managers
 {
     public class AudioManager : MonoBehaviour
     {

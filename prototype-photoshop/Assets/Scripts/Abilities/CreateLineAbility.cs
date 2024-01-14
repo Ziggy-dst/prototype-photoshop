@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,9 @@ namespace Abilities
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
         [SerializeField] private int sortingOrder = 100;
+        
+        [Header("Feedbacks")]
+        public AudioClip soundFX;
         
 
         protected override void OnKeyModifierReleased(AbilityNames abilityName)
@@ -90,6 +94,8 @@ namespace Abilities
                     enemy.GetComponent<Enemy>().Dead();
                 }
                 
+                AudioManager.instance.PlaySound(soundFX);
+
                 RemoveLine();
             }
             else
