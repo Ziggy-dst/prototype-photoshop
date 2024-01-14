@@ -153,6 +153,9 @@ namespace Abilities
             {
                 enemy.GetComponent<Enemy>().Dead();
             }
+
+            yield return new WaitForSeconds(0.1f);
+
             RemoveLine();
             ResetLine();
 
