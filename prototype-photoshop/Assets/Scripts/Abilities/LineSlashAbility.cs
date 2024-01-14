@@ -19,6 +19,7 @@ namespace Abilities
         [SerializeField] private Color startColor = Color.black;
         [SerializeField] private Color endColor = Color.black;
         [SerializeField] private float minDrawLength = 5f;
+        [SerializeField] private int sortingOrder = 100;
 
         private bool canDrawNewLine = true;
 
@@ -62,6 +63,7 @@ namespace Abilities
             _currentLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
             _currentLineRenderer.startColor = startColor;
             _currentLineRenderer.endColor = endColor;
+            _currentLineRenderer.sortingOrder = sortingOrder;
         }
 
         protected override void OnKeyTriggerHolding(AbilityNames abilityName)
