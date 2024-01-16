@@ -2389,7 +2389,7 @@ MonoBehaviour:
   endWidth: 0.1
   startColor: {r: 0.9647059, g: 0.9647059, b: 0.9647059, a: 0.78431374}
   endColor: {r: 0.9647059, g: 0.9647059, b: 0.9647059, a: 0.78431374}
-  minDrawLength: 5
+  minDrawLength: 1
   sortingOrder: 100
   soundFX: {fileID: 8300000, guid: 115a9460a7d22be469cf3e104365aae6, type: 3}
 --- !u!1 &1313319455
@@ -2487,13 +2487,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupEnemy: {fileID: 6615207627693991511, guid: 9c73470932f33f64d869006a898008f1, type: 3}
-  groupWeight: 1
+  groupWeight: 0
   inflateEnemy: {fileID: 8608330984920418375, guid: d926db8d2628d9d42908492bea34d643, type: 3}
   inflateWeight: 1
   lineEnemy: {fileID: 8692117579077560029, guid: 9c9f15b63ff0194479f06e5f23ffc066, type: 3}
   lineWeight: 1
   autoSpawn: 1
-  autoSpawnEnemyQuantityThreshold: 75
+  autoSpawnEnemyQuantityThreshold: 30
   screenSizeX: 8
   screenSizeY: 5
   maxDistanceToScreenEdge: 2
