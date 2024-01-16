@@ -3437,6 +3437,8 @@ MonoBehaviour:
   segments: 30
   lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   lineWidth: 0.05
+  startColor: {r: 0.03137255, g: 0.5019608, b: 0.011764706, a: 0.78431374}
+  endColor: {r: 0.03137255, g: 0.5019608, b: 0.011764706, a: 0.78431374}
   sortingOrder: 101
   soundFX: {fileID: 8300000, guid: de4410ae6a6a24341b34b362f45b5106, type: 3}
 --- !u!1 &2087593069

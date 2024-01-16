@@ -24,6 +24,8 @@ namespace Abilities
         public int segments;
         public Material lineMaterial;
         public float lineWidth;
+        public Color startColor = Color.black;
+        public Color endColor = Color.black;
         public int sortingOrder;
 
         [Header("Feedbacks")]
@@ -119,6 +121,8 @@ namespace Abilities
             rangeArcRenderer.useWorldSpace = false;
             rangeArcRenderer.startWidth = lineWidth;
             rangeArcRenderer.material = lineMaterial;
+            rangeArcRenderer.startColor = startColor;
+            rangeArcRenderer.endColor = endColor;
             rangeArcRenderer.sortingOrder = sortingOrder;
             rangeArcRenderer.positionCount = segments + 1;
             
