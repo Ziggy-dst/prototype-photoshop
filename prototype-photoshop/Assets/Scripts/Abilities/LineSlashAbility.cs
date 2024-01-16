@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class LineSlashAbility : AbilityChangeCursor
+    public class LineSlashAbility : AbilityBase
     {
         private Vector2 origin;
         private LineRenderer _currentLineRenderer;

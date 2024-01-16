@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8177267043494302000}
   - component: {fileID: 3365716107258520583}
+  - component: {fileID: -5781765660374976610}
   - component: {fileID: 3588789880308405113}
   - component: {fileID: -7997811298848833917}
   - component: {fileID: 4655470718802664891}
@@ -89,6 +90,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5781765660374976610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652851203030520143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!114 &3588789880308405113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +217,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3652851203030520143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

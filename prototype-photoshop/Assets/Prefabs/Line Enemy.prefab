@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6770820617133876598}
   - component: {fileID: 2358158053302211950}
   - component: {fileID: 583424392922527044}
+  - component: {fileID: 608967350345199962}
   m_Layer: 6
   m_Name: Line Part
   m_TagString: Enemy
@@ -123,7 +124,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160935233352778317}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -267,6 +268,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 1
+--- !u!114 &608967350345199962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160935233352778317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!1 &235426878116263708
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +296,7 @@ GameObject:
   - component: {fileID: 9130228991784401134}
   - component: {fileID: 1561557562078694391}
   - component: {fileID: 2185009041443484233}
+  - component: {fileID: 6440080844444705380}
   m_Layer: 6
   m_Name: Line Part (1)
   m_TagString: Enemy
@@ -390,7 +406,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235426878116263708}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -534,6 +550,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 1
+--- !u!114 &6440080844444705380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235426878116263708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!1 &3563085160015782394
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +578,7 @@ GameObject:
   - component: {fileID: 9075025909931792013}
   - component: {fileID: 2279944627658321945}
   - component: {fileID: 6743881135744513576}
+  - component: {fileID: 4556119052427436526}
   m_Layer: 6
   m_Name: Line Part (5)
   m_TagString: Enemy
@@ -657,7 +688,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3563085160015782394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -801,6 +832,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 1
+--- !u!114 &4556119052427436526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563085160015782394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!1 &3919296723349984307
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +860,7 @@ GameObject:
   - component: {fileID: 7494414609139488826}
   - component: {fileID: 6006287506526692603}
   - component: {fileID: 8725020299451103404}
+  - component: {fileID: 454766631481974371}
   m_Layer: 6
   m_Name: Line Part (4)
   m_TagString: Enemy
@@ -924,7 +970,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3919296723349984307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1068,6 +1114,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 1
+--- !u!114 &454766631481974371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919296723349984307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!1 &5297235030381624517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,6 +1142,7 @@ GameObject:
   - component: {fileID: 42812123018833293}
   - component: {fileID: 2262431951086571928}
   - component: {fileID: 2706988245173568525}
+  - component: {fileID: 2479494451445260839}
   m_Layer: 6
   m_Name: Line Part (2)
   m_TagString: Enemy
@@ -1191,7 +1252,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5297235030381624517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1335,6 +1396,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 1
+--- !u!114 &2479494451445260839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297235030381624517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!1 &5566727834400586713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1424,7 @@ GameObject:
   - component: {fileID: 3443350736764669284}
   - component: {fileID: 2860014095326500770}
   - component: {fileID: 5390488031969440606}
+  - component: {fileID: 4004166065758854342}
   m_Layer: 6
   m_Name: Line Part (3)
   m_TagString: Enemy
@@ -1458,7 +1534,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5566727834400586713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1602,6 +1678,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 1
+--- !u!114 &4004166065758854342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566727834400586713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb613ed582cdfe54f933396e74a2188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
 --- !u!1 &8692117579077560029
 GameObject:
   m_ObjectHideFlags: 0

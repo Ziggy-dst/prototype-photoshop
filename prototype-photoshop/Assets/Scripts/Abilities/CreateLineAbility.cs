@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class CreateLineAbility : AbilityChangeCursor
+    public class CreateLineAbility : AbilityBase
     {
         private Vector2 origin;
         private LineRenderer _currentLineRenderer;

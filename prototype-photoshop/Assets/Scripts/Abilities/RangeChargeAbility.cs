@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class RangeChargeAbility : AbilityChangeCursor
+    public class RangeChargeAbility : AbilityBase
     {
         private Vector2 origin;
         private GameObject chargeCircleInstance;
@@ -32,7 +32,7 @@ namespace Abilities
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyModifierReleased(abilityName);
 
-            CursorManager.instance.ShowCursor();
+            // CursorManager.instance.ShowCursor();
             RemoveCircle();
         }
 
@@ -41,7 +41,7 @@ namespace Abilities
             if (!abilityName.Equals(this.abilityName)) return;
             base.OnKeyTriggerPressed(abilityName);
             
-            CursorManager.instance.HideCursor();
+            // CursorManager.instance.HideCursor();
             
             origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             chargeCircleInstance = Instantiate(chargeCirclePrefab, origin, Quaternion.Euler(Vector3.zero));
@@ -70,7 +70,7 @@ namespace Abilities
                 enemy.GetComponent<Enemy>().Dead();
             }
 
-            CursorManager.instance.ShowCursor();
+            // CursorManager.instance.ShowCursor();
             AudioManager.instance.PlaySound(soundFX);
             RemoveCircle();
         }
@@ -79,7 +79,7 @@ namespace Abilities
         {
             if (!abilityName.Equals(this.abilityName)) return;
 
-            CursorManager.instance.ShowCursor();
+            // CursorManager.instance.ShowCursor();
             RemoveCircle();
         }
 

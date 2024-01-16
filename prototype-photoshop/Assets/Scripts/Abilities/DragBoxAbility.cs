@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class DragBoxAbility : AbilityChangeCursor
+    public class DragBoxAbility : AbilityBase
     {
         private Vector2 origin;
         private GameObject selectionBoxInstance;

@@ -20,7 +20,7 @@ public class InflatingEnemy : Enemy
     
     void Update()
     {
-        if (transform.localScale.x >= explodeThreshold) isDead = true;
+        if (transform.localScale.x >= explodeThreshold) Dead();
 
         if (isDead)
         {
@@ -34,6 +34,7 @@ public class InflatingEnemy : Enemy
 
     public override void Dead()
     {
-        isDead = true;
+        // isDead = true;
+        Destroy(gameObject);
     }
 }

@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace Abilities
 {
-    public class DotAbility : AbilityChangeCursor
+    public class DotAbility : AbilityBase
     {
         public float dotSize;
         public float damage; //not necessary
-        public Sprite dotCursorPressedSprite;
+        // public Sprite dotCursorPressedSprite;
 
         [Header("Auto Click")] 
         public bool autoClick;
@@ -47,7 +47,7 @@ namespace Abilities
             }
 
             AudioManager.instance.PlaySound(soundFX);
-            CursorManager.instance.ChangeCursor(dotCursorPressedSprite);
+            // CursorManager.instance.ChangeCursor(dotCursorPressedSprite);
         }
 
         protected override void OnKeyTriggerHolding(AbilityNames abilityName)
@@ -69,7 +69,7 @@ namespace Abilities
             base.OnKeyTriggerReleased(abilityName);
             // reset
             holdTimer = 0;
-            CursorManager.instance.ChangeCursor(cursor);
+            // CursorManager.instance.ChangeCursor(cursor);
         }
     }
 }
