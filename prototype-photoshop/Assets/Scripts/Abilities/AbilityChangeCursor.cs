@@ -10,6 +10,9 @@ namespace Abilities
     {
         [Header("Cursor")] 
         public Sprite cursor;
+
+        [Header("Combat")] 
+        public float damage;
         
         protected override void OnKeyModifierPressed(AbilityNames abilityName)
         {

@@ -91,7 +91,7 @@ namespace Abilities
                 _currentBoxCollider.GetContacts(selectedEnemies);
                 foreach (var enemy in selectedEnemies)
                 {
-                    enemy.GetComponent<Enemy>().Dead();
+                    enemy.GetComponent<Enemy>().TakeDamage(damage);
                 }
                 
                 AudioManager.instance.PlaySound(soundFX);

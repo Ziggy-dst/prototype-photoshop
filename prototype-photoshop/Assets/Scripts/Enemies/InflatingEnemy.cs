@@ -18,8 +18,10 @@ public class InflatingEnemy : Enemy
         isDead = false;
     }
     
-    void Update()
+    public override void Update()
     {
+        base.Update();
+        
         if (transform.localScale.x >= explodeThreshold) isDead = true;
 
         if (isDead)

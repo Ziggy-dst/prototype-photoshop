@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6367abad9824f9418ec406ef4dc34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 1
+  hitPoint: 100
+  damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
 --- !u!61 &4655470718802664891
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ namespace Abilities
     public class DotAbility : AbilityChangeCursor
     {
         public float dotSize;
-        public float damage; //not necessary
         public Sprite dotCursorPressedSprite;
 
         [Header("Auto Click")] 
@@ -43,7 +42,7 @@ namespace Abilities
             Collider2D[] clickedEnemies = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), dotSize);
             foreach (var enemyCollider2D in clickedEnemies)
             {
-                if(enemyCollider2D.TryGetComponent<Enemy>(out Enemy enemy)) enemy.Dead(); //Instant Kill, to be modified
+                if(enemyCollider2D.TryGetComponent<Enemy>(out Enemy enemy)) enemy.TakeDamage(damage); //Instant Kill, to be modified
             }
 
             AudioManager.instance.PlaySound(soundFX);

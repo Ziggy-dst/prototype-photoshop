@@ -17,7 +17,6 @@ namespace Abilities
         
         [Header("Main")]
         public float maxDiagonalLength;
-        public float damage; //not necessary
         public GameObject selectionBoxPrefab;
 
         [Header("Range Arc")]
@@ -91,7 +90,7 @@ namespace Abilities
             selectionBoxInstance.GetComponent<BoxCollider2D>().GetContacts(selectedEnemies);
             foreach (var enemy in selectedEnemies)
             {
-                enemy.GetComponent<Enemy>().Dead();
+                enemy.GetComponent<Enemy>().TakeDamage(damage);
             }
             
             AudioManager.instance.PlaySound(soundFX);

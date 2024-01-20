@@ -14,7 +14,6 @@ namespace Abilities
 
         [Header("Main")]
         public float chargeSpeed;
-        public float damage; //not necessary
         public GameObject chargeCirclePrefab;
 
         [Header("Feedbacks")]
@@ -67,7 +66,7 @@ namespace Abilities
             chargeCircleInstance.GetComponent<CircleCollider2D>().GetContacts(selectedEnemies);
             foreach (var enemy in selectedEnemies)
             {
-                enemy.GetComponent<Enemy>().Dead();
+                enemy.GetComponent<Enemy>().TakeDamage(damage);
             }
 
             CursorManager.instance.ShowCursor();

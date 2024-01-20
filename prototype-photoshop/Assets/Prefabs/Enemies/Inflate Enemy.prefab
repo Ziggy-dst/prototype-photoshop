@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0afa2588e958f49906f4243fc81803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 1
+  hitPoint: 100
+  damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
   explodeThreshold: 5
   isDead: 0
 --- !u!58 &126893293606361369
