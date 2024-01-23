@@ -639,7 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 2
   cursor: {fileID: 21300000, guid: 6f73f8d55fbc54e41b505e3cbb80b0c5, type: 3}
-  damage: 15
+  damage: 40
   startWidth: 0.3
   endWidth: 0.3
   startColor: {r: 0.03137255, g: 0.5019608, b: 0.011764706, a: 0.78431374}
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 0
   cursor: {fileID: 21300000, guid: bec65358ef1ed834a99caacd31c576e0, type: 3}
-  damage: 25
+  damage: 40
   dotSize: 0.25
   dotCursorPressedSprite: {fileID: 21300000, guid: 28b3b26b730561c418064ec4ac62294e, type: 3}
   autoClick: 1
@@ -2386,7 +2386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 1
   cursor: {fileID: 21300000, guid: 6f73f8d55fbc54e41b505e3cbb80b0c5, type: 3}
-  damage: 15
+  damage: 25
   startWidth: 0.3
   endWidth: 0.3
   startColor: {r: 0.03137255, g: 0.5019608, b: 0.011764706, a: 0.78431374}
@@ -2440,7 +2440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 4
   cursor: {fileID: 21300000, guid: 2bff07dc8e8176449b7538607a1b2787, type: 3}
-  damage: 10
+  damage: 15
   chargeSpeed: 5
   chargeCirclePrefab: {fileID: 8874873857222247791, guid: 9ecc6b1bb654e854db8b1879f28d1105, type: 3}
   soundFX: {fileID: 8300000, guid: de4410ae6a6a24341b34b362f45b5106, type: 3}
@@ -3433,7 +3433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 3
   cursor: {fileID: 21300000, guid: 8d65344d986397546b6f6d6af731df76, type: 3}
-  damage: 10
+  damage: 15
   maxDiagonalLength: 6
   selectionBoxPrefab: {fileID: 8589884508177106602, guid: 36e802b251adca84eb7613b6caf42bae, type: 3}
   segments: 30

@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
   explodeThreshold: 5
   isDead: 0
 --- !u!58 &126893293606361369

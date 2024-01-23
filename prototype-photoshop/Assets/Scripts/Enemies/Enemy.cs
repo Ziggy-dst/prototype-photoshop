@@ -8,10 +8,16 @@ public class Enemy : MonoBehaviour
 {
     public float hitPoint = 1;
     public GameObject damagePopupPrefab;
+    public bool feedbacks = true;
+    protected SpriteRenderer _spriteRenderer;
+    private Color originalColor;
+    [Header("Death Feedbacks")] 
+    public GameObject deathParticlePrefab;
     
-    void Start()
+    public virtual void Start()
     {
-        
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = _spriteRenderer.color;
     }
     
     public virtual void Update()
@@ -26,10 +32,17 @@ public class Enemy : MonoBehaviour
     {
         hitPoint -= damage;
         PopupDamage(damage);
+        if (feedbacks)
+        {
+            _spriteRenderer.DOColor(Color.white, 0);
+            _spriteRenderer.DOColor(originalColor, 0.25f);
+        }
     }
 
     public virtual void Dead()
     {
+        GameObject deathParticle = Instantiate(deathParticlePrefab, transform.position, Quaternion.Euler(Vector3.zero));
+        // deathParticle.transform.localScale = transform.localScale;
         Destroy(gameObject);
     }
 
@@ -48,6 +61,5 @@ public class Enemy : MonoBehaviour
             .Insert(1, damageText.DOFade(0, 1f))
             .OnComplete((() => { Destroy(damagePopup); }));
         popupSequence.Play();
-
     }
 }

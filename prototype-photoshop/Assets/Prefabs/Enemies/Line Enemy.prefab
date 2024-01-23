@@ -268,6 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!1 &235426878116263708
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!1 &3563085160015782394
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!1 &3919296723349984307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!1 &5297235030381624517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!1 &5566727834400586713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!1 &8692117579077560029
 GameObject:
   m_ObjectHideFlags: 0

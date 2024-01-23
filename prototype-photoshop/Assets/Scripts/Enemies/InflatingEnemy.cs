@@ -6,36 +6,32 @@ using UnityEngine;
 public class InflatingEnemy : Enemy
 {
     public float explodeThreshold;
-
-    private SpriteRenderer _spriteRenderer;
-
-    public bool isDead;
     
-    void Start()
+    public override void Start()
     {
+        base.Start();
         transform.localScale = Vector3.zero;
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        isDead = false;
     }
     
     public override void Update()
     {
         base.Update();
         
-        if (transform.localScale.x >= explodeThreshold) isDead = true;
-
-        if (isDead)
+        if (transform.localScale.x >= explodeThreshold)
         {
-            _spriteRenderer.color = new Color32(154, 69, 41, 255);
-            _spriteRenderer.sortingOrder = -1;
-            Destroy(gameObject.GetComponent<CircleCollider2D>());
-            Destroy(this);
-        }
-        else transform.localScale += Vector3.one * Time.deltaTime;
-    }
+            GameObject colorCircle = new GameObject("Color Circle");
+            SpriteRenderer colorCircleRenderer = colorCircle.AddComponent<SpriteRenderer>();
 
-    public override void Dead()
-    {
-        isDead = true;
+            colorCircle.transform.position = transform.position;
+            colorCircle.transform.localScale = transform.localScale;
+
+            colorCircleRenderer.sprite = _spriteRenderer.sprite;
+            colorCircleRenderer.color = new Color32(154, 69, 41, 255);
+            colorCircleRenderer.sortingOrder = -1;
+
+            Destroy(gameObject);
+        }
+        
+        else transform.localScale += Vector3.one * Time.deltaTime;
     }
 }

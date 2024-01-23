@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.12156863, g: 0.12156863, b: 0.12156863, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   damagePopupPrefab: {fileID: 3679785978165310050, guid: b473055894e29cc43bc2fdd3309ad0fd, type: 3}
+  feedbacks: 1
+  deathParticlePrefab: {fileID: 915985173721532011, guid: c9a202c614033e94aabde830552bd9ff, type: 3}
 --- !u!61 &4655470718802664891
 BoxCollider2D:
   m_ObjectHideFlags: 0
